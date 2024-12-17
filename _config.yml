@@ -1,0 +1,65 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely edit after that. If you find
+# yourself editing this file very often, consider using Jekyll's data files
+# feature for the data you need to update frequently.
+#
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'bundle exec jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+# These are used to personalize your new site. If you look in the HTML files,
+# you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
+# You can create any custom variable you would like, and they will be accessible
+# in the templates via {{ site.myvariable }}.
+title: Buffalo Open Coffee Club
+email: bocc@zackglick.com
+description: >- # this means to ignore newlines until "baseurl:"
+  Join us every Tuesday at Buffalo Open Coffee Club in Seneca One for a stimulating blend of networking, 
+  idea-sharing, and gourmet coffee, where Buffalo's builders unite to shape the future!.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "716coffee.club" # the base hostname & protocol for your site, e.g. http://example.com
+domain: "716coffee.club"
+#twitter_username: jekyllrb
+#github_username:  jekyll
+
+# Build settings
+markdown: kramdown
+#theme: minima
+theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: sunrise
+logo: "/assets/images/bocc-mug-logo.png"
+
+plugins:
+  - jekyll-feed
+
+footer:
+  links:
+    - label: "Linkedin"
+      icon: "fab fa-fw fa-twitter-square"
+      url: "https://www.linkedin.com/showcase/buffalo-open-coffee"
+    - label: "Instagram"
+      icon: "fab fa-fw fa-instagram"
+      url: "https://www.instagram.com/buffaloopencoffeeclub"
+    - label: "Facebook"
+      icon: "fab fa-fw fa-facebook"
+      url: "https://www.facebook.com/buffaloopencoffeeclub"
+    - label: "Register on Eventbrite"
+      url: "https://bocc.eventbrite.com/"
+    - label: "Powered by BootSector"
+      url: "https://joinbootsector.com/"
+    - label: "Contact Us"
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSfDqOoB3eLfUJe2bST_3hzpHFPNxR8zNRARXSpbpLkvJrjmyw/viewform?usp=header"
+
+# Exclude from processing.
+# The following items will not be processed, by default. Create a custom list
+# to override the default setting.
+# exclude:
+#   - Gemfile
+#   - Gemfile.lock
+#   - node_modules
+#   - vendor/bundle/
+#   - vendor/cache/
+#   - vendor/gems/
+#   - vendor/ruby/
