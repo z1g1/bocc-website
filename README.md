@@ -1,7 +1,3 @@
-<<<<<<< Updated upstream
-# bocc-website
-Static website for Buffalo Open Coffee club using github pages 
-=======
 # BOCC Website
 
 ## Ruby Setup
@@ -24,4 +20,3 @@ Static website for Buffalo Open Coffee club using github pages
 ## Theme 
 1. Based the theme off of [minimal-mistakes](https://github.com/mmistakes/minimal-mistakes)
 1. Added ``gem "minimal-mistakes-jekyll"`` to Gemfile, installed using bundle, and then added ``theme: minimal-mistakes-jekyll`` to ``_config.yml``
->>>>>>> Stashed changes
