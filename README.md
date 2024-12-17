@@ -19,4 +19,5 @@
 
 ## Theme 
 1. Based the theme off of [minimal-mistakes](https://github.com/mmistakes/minimal-mistakes)
-1. Added ``gem "minimal-mistakes-jekyll"`` to Gemfile, installed using bundle, and then added ``theme: minimal-mistakes-jekyll`` to ``_config.yml``
+1. Need to install it as a [remote theme](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/) 
+to be compatible with GitHub Pages. Add ``gem "jekyll-include-cache", group: :jekyll_plugins`` to Gemfile, then added ``jekyll-include-cache`` to ``plugins`` array in ``_config.yml``
