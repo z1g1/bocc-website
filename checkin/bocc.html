@@ -1,0 +1,34 @@
+---
+layout: single
+title: Welcome to BOCC
+permalink: /checkin/bocc
+---
+
+
+<h2 id="checkinHeader">Please check in</h2>
+<form id="checkinForm">
+    <input type="hidden" id="eventId" value="bocc">
+
+    <label for="name">Name (required):</label>
+    <input type="text" id="name" name="name" required><br><br>
+
+    <label for="email">Email (required):</label>
+    <input type="email" id="email" name="email" required><br><br>
+
+    <label for="phone">Phone (optional):</label>
+    <input type="tel" id="phone" name="phone"><br><br>
+
+    <label for="businessName">Business Name (optional):</label>
+    <input type="text" id="businessName" name="businessName"><br><br>
+
+    <label for="okToEmail">OK to email you:</label>
+    <input type="checkbox" id="okToEmail" name="okToEmail" checked><br><br>
+
+    <button type="button" id="checkinButton">Check In</button>
+</form>
+
+<div id="greeting" style="display:none;">
+    <h3>Thank you for checking in!</h3>
+</div>
+
+<script src="/js/checkin.js"></script>
