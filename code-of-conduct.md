@@ -2,8 +2,11 @@
 layout: single
 class: wide
 header:
-  image: /assets/images/BOCC-header-image-coffee-background.png
+  overlay_image: /assets/images/BOCC-header-image-coffee-background.png
   image_description: "The BOCC logo is a buffalo on a sunrise background. The logo is on a background of coffee beans"
+  actions:
+    - label: "Report a COC violation"
+      url: "https://docs.google.com/forms/d/e/1FAIpQLSfDqOoB3eLfUJe2bST_3hzpHFPNxR8zNRARXSpbpLkvJrjmyw/viewform"
 title: Buffalo Open Coffee Club Code of Conduct
 permalink: /code-of-conduct/
 ---
