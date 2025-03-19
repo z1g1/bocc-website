@@ -5,8 +5,12 @@
 layout: single
 class: wide
 header:
-  image: /assets/images/BOCC-header-image-coffee-background.png
+  overlay_image: /assets/images/BOCC-header-image-coffee-background.png
   image_description: "The BOCC logo is a buffalo on a sunrise background. The logo is on a background of coffee beans"
+  actions:
+    - label: "Attend BOCC"
+      url: "https://www.eventbrite.com/e/buffalo-open-coffee-club-tickets-1112864570889"
+
 ---
 
 
