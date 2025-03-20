@@ -6,6 +6,31 @@ document.addEventListener('DOMContentLoaded', function() {
       return urlParams.get(name) || '';
   }
 
+  function captureCheckinData() {
+      const debug = getUrlParameter('debug'); // 1 or 0 for true or false
+      const token = getUrlParameter('token'); // Token string
+      const eventId = getUrlParameter('eventId') || document.getElementById('eventId').value; // Event ID from URL or hidden input
+      const checkinDate = new Date().toISOString(); // Capture the date in UTC
+
+      // Use FormData to get all form values
+      const form = document.getElementById('checkinForm');
+      const formData = new FormData(form);
+      const formValues = Object.fromEntries(formData.entries());
+
+      // Combine all data into a single object
+      const checkinData = {
+          checkinDate: checkinDate,
+          eventId: eventId,
+          debug: debug,
+          token: token,
+          ...formValues,
+          okToEmail: formData.get('okToEmail') === 'on' // Convert checkbox value to boolean
+      };
+
+      console.log('Captured checkinData:', checkinData);
+      return checkinData;
+  }
+
   function sendCheckinData(data) {
       console.log('Sending checkinData to the API endpoint...');
       fetch('https://bocc-backend.netlify.app/.netlify/functions/checkin', {
@@ -24,52 +49,39 @@ document.addEventListener('DOMContentLoaded', function() {
       });
   }
 
+  const localOnly = getUrlParameter('local'); // 1 to skip API call
+
   if (checkinData) {
-      document.getElementById('greeting').innerText = 'Thank you for coming back!';
+      // Update checkinData with new values
+      checkinData = { ...checkinData, ...captureCheckinData() };
+
+      document.getElementById('greeting').innerText = 'Welcome back!';
+      document.getElementById('checkinHeader').innerText = 'Thank you!';
       document.getElementById('checkinForm').style.display = 'none';
       document.getElementById('greeting').style.display = 'block'; // Show the greeting div
 
-      // Capture the new check-in date
-      checkinData.checkinDate = new Date().toISOString();
-      console.log(checkinData);
+      // Store the updated checkinData in localStorage
+      localStorage.setItem('checkinData', JSON.stringify(checkinData));
 
-      // Send the checkinData to the API endpoint
-      sendCheckinData(checkinData);
+      // Send the checkinData to the API endpoint if localOnly is not set to 1
+      if (localOnly !== '1') {
+          sendCheckinData(checkinData);
+      }
   } else {
       document.getElementById('checkinButton').addEventListener('click', function() {
           // Validate required fields
-          const name = document.getElementById('name').value;
-          const email = document.getElementById('email').value;
+          const form = document.getElementById('checkinForm');
+          const formData = new FormData(form);
+          const name = formData.get('name');
+          const email = formData.get('email');
 
           if (!name || !email) {
               alert('Please fill out the required fields.');
               return;
           }
 
-          const checkinDate = new Date().toISOString(); // Capture the date in UTC
-          const eventId = document.getElementById('eventId').value; // Get the ID from the hidden input field
-
-          // Capture form values
-          const phone = document.getElementById('phone').value;
-          const businessName = document.getElementById('businessName').value;
-          const okToEmail = document.getElementById('okToEmail').checked;
-
-          // Get URL parameters
-          const debug = getUrlParameter('debug'); // 1 or 0 for true or false
-          const token = getUrlParameter('token'); // Token string
-
-          // Write all the variables to an array for later usage 
-          checkinData = {
-              checkinDate: checkinDate,
-              eventId: eventId,
-              name: name,
-              email: email,
-              phone: phone,
-              businessName: businessName,
-              okToEmail: okToEmail,
-              debug: debug,
-              token: token
-          };
+          // Capture new checkinData
+          checkinData = captureCheckinData();
 
           // Store the checkinData in localStorage
           localStorage.setItem('checkinData', JSON.stringify(checkinData));
@@ -77,11 +89,14 @@ document.addEventListener('DOMContentLoaded', function() {
           // Write the checkinData to the console
           console.log(checkinData);
 
-          // Send the checkinData to the API endpoint
-          sendCheckinData(checkinData);
+          // Send the checkinData to the API endpoint if localOnly is not set to 1
+          if (localOnly !== '1') {
+              sendCheckinData(checkinData);
+          }
 
           // Display thank you message
-          document.getElementById('greeting').innerText = 'Welcome back!';
+          document.getElementById('checkinHeader').innerText = 'Thank you!';
+          document.getElementById('greeting').innerText = 'Thank you for registering!';
           document.getElementById('checkinForm').style.display = 'none';
           document.getElementById('greeting').style.display = 'block'; // Show the greeting div
       });
