@@ -1,3 +1,5 @@
+// this script is used on any page where you want to capture the checkin form
+// the first page it was used with is bocc.html
 document.addEventListener('DOMContentLoaded', function() {
   let checkinData = JSON.parse(localStorage.getItem('checkinData'));
 
