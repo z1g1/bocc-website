@@ -1,5 +1,10 @@
 document.addEventListener('DOMContentLoaded', function() {
-  var checkinData = JSON.parse(localStorage.getItem('checkinData'));
+  let checkinData = JSON.parse(localStorage.getItem('checkinData'));
+
+  function getUrlParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name) || '';
+  }
 
   function sendCheckinData(data) {
       console.log('Sending checkinData to the API endpoint...');
@@ -33,21 +38,25 @@ document.addEventListener('DOMContentLoaded', function() {
   } else {
       document.getElementById('checkinButton').addEventListener('click', function() {
           // Validate required fields
-          var name = document.getElementById('name').value;
-          var email = document.getElementById('email').value;
+          const name = document.getElementById('name').value;
+          const email = document.getElementById('email').value;
 
           if (!name || !email) {
               alert('Please fill out the required fields.');
               return;
           }
 
-          var checkinDate = new Date().toISOString(); // Capture the date in UTC
-          var eventId = document.getElementById('eventId').value; // Get the ID from the hidden input field
+          const checkinDate = new Date().toISOString(); // Capture the date in UTC
+          const eventId = document.getElementById('eventId').value; // Get the ID from the hidden input field
 
           // Capture form values
-          var phone = document.getElementById('phone').value;
-          var businessName = document.getElementById('businessName').value;
-          var okToEmail = document.getElementById('okToEmail').checked;
+          const phone = document.getElementById('phone').value;
+          const businessName = document.getElementById('businessName').value;
+          const okToEmail = document.getElementById('okToEmail').checked;
+
+          // Get URL parameters
+          const debug = getUrlParameter('debug'); // 1 or 0 for true or false
+          const token = getUrlParameter('token'); // Token string
 
           // Write all the variables to an array for later usage 
           checkinData = {
@@ -57,7 +66,9 @@ document.addEventListener('DOMContentLoaded', function() {
               email: email,
               phone: phone,
               businessName: businessName,
-              okToEmail: okToEmail
+              okToEmail: okToEmail,
+              debug: debug,
+              token: token
           };
 
           // Store the checkinData in localStorage
