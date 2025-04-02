@@ -13,6 +13,11 @@ header:
 
 ---
 
+## One off Monday event
+
+For **one week only** BOCC will be meeting on Monday April 7th 2025 at 830 AM vs our normal Tuesday morning event. We are moving to be the kickoff event for [Buffalo Startup Week 2025](https://www.buffalo.edu/partnerships/landing-pages/startup-week.html). Please RSVP and [join us](https://www.buffalo.edu/partnerships/landing-pages/startup-week.html#register). 
+
+## Weekly 
 
 Join us every Tuesday 7:30-9 AM at Buffalo Open Coffee Club. We meet in the Seneca One lobby for a stimulating blend of networking, idea-sharing, and gourmet coffee, where Buffalo's builders unite to shape the future!
 
