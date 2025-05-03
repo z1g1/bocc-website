@@ -31,7 +31,7 @@ BOCC is often the first stop for those exploring Buffalo’s startup ecosystem. 
 
 <a href="https://www.linkedin.com/posts/scott-wojtanik-mba-59ba72108_morningmeetup-buffalocoffeeclub-coffeewithpurpose-activity-7324058248595054592-KBeB"><img src="/assets/images/bocc-sponsorship-scott.png" alt="A Screenshot of a linkedin post from Scott Wojtanik about BOCC"></a>
 ---
-<a href="https://www.linkedin.com/posts/lenalevine_this-mornings-buffalo-open-coffee-club-was-activity-7201391349776973824-nddW?"><img src="/assets/images/bocc-sponsorship-scott.png" alt="A Screenshot of a linkedin post from Lena Levine about BOCC"></a>
+<a href="https://www.linkedin.com/posts/lenalevine_this-mornings-buffalo-open-coffee-club-was-activity-7201391349776973824-nddW?"><img src="/assets/images/bocc-sponsorship-lena.png" alt="A Screenshot of a linkedin post from Lena Levine about BOCC"></a>
 
 ---
 
