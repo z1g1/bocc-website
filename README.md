@@ -15,7 +15,8 @@
 1. To make sure we can test the site using the Eventbrite [embed checkout](https://www.eventbrite.com/help/en-us/articles/347218/how-to-sell-eventbrite-tickets-on-your-website-through-an-embedded-checkout/) generate a self signed SSL Certificate
   1. The Keys are self-signed so there shouldn't be an issue with them on Github, but just to be safe add ``ssl/*``, ``*.key``, and ``*.cert`` to ``.Gitignore``
   1. Create an SSL directory in the local branch
-  1. Generate the self-signed cert. You can generate fake info except for **Common Name (CN)** which must be ``localhost``. ``openssl req -new -x509 -key localhost.key -out localhost.crt -days 365``
+  1. Generate the self-signed cert. You can generate fake info except for **Common Name (CN)** which must be ``localhost``. ``openssl req -x509 -out localhost.crt -keyout localhost.key -newkey rsa:2048 -nodes -sha256 -subj '/CN=localhost' -extensions EXT -config <( \
+   printf "[dn]\nCN=localhost\n[req]\ndistinguished_name = dn\n[EXT]\nsubjectAltName=DNS:localhost\nkeyUsage=digitalSignature\nextendedKeyUsage=serverAuth") -days 365`` hat tip to [Clayton Errington's blog post](https://claytonerrington.com/blog/securing-jekyll-with-ssl-locally/) that helped me get this working
 1. Generate and run the basic site using ``bundle exec jekyll serve --host localhost --ssl-key ssl/localhost.key --ssl-cert ssl/localhost.crt``. Since we're using TLS use this vs the normal ``bundle exec jekyll serve``
 
 
