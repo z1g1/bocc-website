@@ -41,3 +41,6 @@ Join us every Tuesday 7:30-9 AM at Buffalo Open Coffee Club. We meet in the Sene
 
 ## Code of Conduct
 Buffalo Open Coffee Club has a [Code of Conduct](/code-of-conduct/) covering acceptable behavior for all attendees. 
+
+## Powered by
+Buffalo Open Coffee Club is made possible through the Springboard Prize Competition, supported by the Ralph C. Wilson, Jr. Foundation.
