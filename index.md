@@ -17,6 +17,9 @@ header:
 
 Join us every Tuesday 7:30-9 AM at Buffalo Open Coffee Club. We meet in the Seneca One lobby for a stimulating blend of networking, idea-sharing, and gourmet coffee, where Buffalo's builders unite to shape the future! [Join us](https://www.eventbrite.com/e/buffalo-open-coffee-club-tickets-1112864570889), or [learn more](/about/)
 
+## Online
+Join our online community and contiune the Tuesday energy during the week on [716.social](https://www.716.social/join?invitation_token=bed202874ed69479b8a909a526f6e81a39a855d0-27595154-ec42-4727-a330-64a0b7680855)
+
 ## Free Tickets on Eventbrite
 <div id="eventbrite-widget-container-1112864570889"></div>
 
