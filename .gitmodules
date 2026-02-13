@@ -1,0 +1,3 @@
+[submodule ".claude"]
+	path = .claude
+	url = https://github.com/z1g1/prompts
