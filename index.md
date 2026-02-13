@@ -21,7 +21,7 @@ Join us every Tuesday 7:30-9 AM at Buffalo Open Coffee Club. We meet in the Sene
 Join our online community and contiune the Tuesday energy during the week on [716.social](https://www.716.social/join?invitation_token=bed202874ed69479b8a909a526f6e81a39a855d0-27595154-ec42-4727-a330-64a0b7680855)
 
 ## Free Tickets on Eventbrite
-<div id="eventbrite-widget-container-1112864570889"></div>
+<div id="eventbrite-widget-container-1983098086761"></div>
 
 <script src="https://www.eventbrite.com/static/widgets/eb_widgets.js"></script>
 
@@ -33,11 +33,11 @@ Join our online community and contiune the Tuesday energy during the week on [71
     window.EBWidgets.createWidget({
         // Required
         widgetType: 'checkout',
-        eventId: '1112864570889',
-        iframeContainerId: 'eventbrite-widget-container-1112864570889',
+        eventId: '1983098086761',
+        iframeContainerId: 'eventbrite-widget-container-1983098086761',
 
         // Optional
-        iframeContainerHeight: 425,  // Widget height in pixels. Defaults to a minimum of 425px if not provided
+        iframeContainerHeight: 625,  // Widget height in pixels. Defaults to a minimum of 625px if not provided
         onOrderComplete: exampleCallback  // Method called when an order has successfully completed
     });
 </script>
