@@ -33,22 +33,21 @@ document.addEventListener('DOMContentLoaded', function() {
       return checkinData;
   }
 
-  function sendCheckinData(data) {
+  async function sendCheckinData(data) {
       console.log('Sending checkinData to the API endpoint...');
-      fetch('https://bocc-backend.netlify.app/.netlify/functions/checkin', {
-          method: 'POST',
-          headers: {
-              'Content-Type': 'application/json'
-          },
-          body: JSON.stringify(data)
-      })
-      .then(response => response.json())
-      .then(data => {
-          console.log('Success:', data);
-      })
-      .catch((error) => {
+      try {
+          const response = await fetch('https://bocc-backend.netlify.app/.netlify/functions/checkin', {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+          });
+          const result = await response.json();
+          console.log('Success:', result);
+      } catch (error) {
           console.error('Error:', error);
-      });
+      }
   }
 
   const localOnly = getUrlParameter('local'); // 1 to skip API call
@@ -67,10 +66,15 @@ document.addEventListener('DOMContentLoaded', function() {
 
       // Send the checkinData to the API endpoint if localOnly is not set to 1
       if (localOnly !== '1') {
-          sendCheckinData(checkinData);
+          try {
+              sendCheckinData(checkinData);
+          } catch (error) {
+              console.error('Error sending checkinData:', error);
+          }
       }
   } else {
-      document.getElementById('checkinButton').addEventListener('click', function() {
+      const checkinButton = document.getElementById('checkinButton');
+      const handleCheckinClick = async function() {
           // Validate required fields
           const form = document.getElementById('checkinForm');
           const formData = new FormData(form);
@@ -82,18 +86,19 @@ document.addEventListener('DOMContentLoaded', function() {
               return;
           }
 
-          // Capture new checkinData
-          checkinData = captureCheckinData();
+          // Get checkinData from local storage
+          checkinData = JSON.parse(localStorage.getItem('checkinData')) || captureCheckinData();
 
           // Store the checkinData in localStorage
           localStorage.setItem('checkinData', JSON.stringify(checkinData));
-          
-          // Write the checkinData to the console
-          console.log(checkinData);
 
           // Send the checkinData to the API endpoint if localOnly is not set to 1
           if (localOnly !== '1') {
-              sendCheckinData(checkinData);
+              try {
+                  await sendCheckinData(checkinData);
+              } catch (error) {
+                  console.error('Error sending checkinData:', error);
+              }
           }
 
           // Display thank you message
@@ -101,6 +106,12 @@ document.addEventListener('DOMContentLoaded', function() {
           document.getElementById('greeting').innerText = 'Thank you for registering!';
           document.getElementById('checkinForm').style.display = 'none';
           document.getElementById('greeting').style.display = 'block'; // Show the greeting div
-      });
+
+          // Remove the event listener after handling the click
+          checkinButton.removeEventListener('click', handleCheckinClick);
+      };
+
+      // Add the event listener
+      checkinButton.addEventListener('click', handleCheckinClick);
   }
 });
