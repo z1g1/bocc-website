@@ -7,7 +7,8 @@ header:
   actions:
     - label: "Report a COC violation"
       url: "https://docs.google.com/forms/d/e/1FAIpQLSfDqOoB3eLfUJe2bST_3hzpHFPNxR8zNRARXSpbpLkvJrjmyw/viewform"
-title: Buffalo Open Coffee Club Code of Conduct
+title: "Code of Conduct - Buffalo Open Coffee Club"
+description: "Buffalo Open Coffee Club is dedicated to providing a harassment-free networking experience for all participants. Read our community standards and reporting procedures."
 permalink: /code-of-conduct/
 ---
 

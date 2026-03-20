@@ -16,14 +16,23 @@
 title: Buffalo Open Coffee Club
 email: bocc@zackglick.com
 description: >- # this means to ignore newlines until "baseurl:"
-  Join us every Tuesday at Buffalo Open Coffee Club in Seneca One for a stimulating blend of networking, 
-  idea-sharing, and gourmet coffee, where Buffalo's builders unite to shape the future!.
+  Buffalo Open Coffee Club (BOCC) is a free weekly networking event every Tuesday 7:30-9 AM
+  at Seneca One Tower in downtown Buffalo, NY. Connect with entrepreneurs, small business
+  owners, and startup founders over coffee. Open to all — register free on Eventbrite.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "716coffee.club" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://716coffee.club" # the base hostname & protocol for your site, e.g. http://example.com
 domain: "716coffee.club"
 
-#twitter_username: jekyllrb
-#github_username:  jekyll
+# Social / SEO
+og_image: /assets/images/BOCC-header-image-coffee-background.png
+twitter:
+  username: buffaloopencoffeeclub
+social:
+  name: Buffalo Open Coffee Club
+  links:
+    - https://www.linkedin.com/showcase/buffalo-open-coffee
+    - https://www.instagram.com/buffaloopencoffeeclub
+    - https://www.facebook.com/buffaloopencoffeeclub
 
 # Build settings
 markdown: kramdown
@@ -35,11 +44,13 @@ logo: "/assets/images/bocc-mug-logo.png"
 plugins:
   - jekyll-feed
   - jekyll-include-cache
+  - jekyll-seo-tag
+  - jekyll-sitemap
 
 footer:
   links:
     - label: "Linkedin"
-      icon: "fab fa-fw fa-twitter-square"
+      icon: "fab fa-fw fa-linkedin"
       url: "https://www.linkedin.com/showcase/buffalo-open-coffee"
     - label: "Instagram"
       icon: "fab fa-fw fa-instagram"
@@ -51,17 +62,18 @@ footer:
       url: "https://bocc.eventbrite.com/"
     - label: "Powered by BootSector"
       url: "https://joinbootsector.com/"
+    - label: "Become a Sponsor"
+      icon: "fas fa-fw fa-handshake"
+      url: "/sponsorship/"
     - label: "Contact Us"
       url: "https://docs.google.com/forms/d/e/1FAIpQLSfDqOoB3eLfUJe2bST_3hzpHFPNxR8zNRARXSpbpLkvJrjmyw/viewform?usp=header"
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
 # to override the default setting.
-# exclude:
-#   - Gemfile
-#   - Gemfile.lock
-#   - node_modules
-#   - vendor/bundle/
-#   - vendor/cache/
-#   - vendor/gems/
-#   - vendor/ruby/
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - vendor/
+  - output/
+  - README.md
