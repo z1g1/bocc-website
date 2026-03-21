@@ -20,7 +20,36 @@
 1. Generate and run the basic site using ``bundle exec jekyll serve --host localhost --ssl-key ssl/localhost.key --ssl-cert ssl/localhost.crt``. Since we're using TLS use this vs the normal ``bundle exec jekyll serve``
 
 
-## Theme 
+## Theme
 1. Based the theme off of [minimal-mistakes](https://github.com/mmistakes/minimal-mistakes)
-1. Need to install it as a [remote theme](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/) 
+1. Need to install it as a [remote theme](https://mmistakes.github.io/minimal-mistakes/docs/quick-start-guide/)
 to be compatible with GitHub Pages. Add ``gem "jekyll-include-cache", group: :jekyll_plugins`` to Gemfile, then added ``jekyll-include-cache`` to ``plugins`` array in ``_config.yml``
+
+
+## Sponsor Redirect (Post-Check-in)
+
+After a visitor checks in at an event, they see a countdown and are redirected to the current sponsor's website. This fulfills the "Redirect link on BOCC's digital Check-in App" benefit listed on the sponsorship page.
+
+### Configuration
+
+Edit ``_data/sponsor.yml``:
+
+```yaml
+enabled: true          # set to false to disable the redirect entirely
+name: "Sponsor Name"   # displayed in the countdown message
+url: "https://..."     # redirect destination
+delay: 5               # seconds before redirect
+```
+
+### How it works
+
+- After check-in, the greeting shows: "Visiting **Sponsor Name** in 5 seconds..."
+- Users can click "Go now" to redirect immediately, or "Stay here" to cancel
+- The sponsor data is injected into check-in pages at build time via Jekyll/Liquid
+- Both ``/checkin/bocc`` and ``/checkin/bocc-afternoon`` use the same sponsor config
+
+### To update the sponsor
+
+1. Edit ``_data/sponsor.yml`` with the new sponsor's name and URL
+2. Commit and push -- GitHub Pages will rebuild automatically
+3. No code changes required
