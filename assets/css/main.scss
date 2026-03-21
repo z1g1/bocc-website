@@ -169,6 +169,39 @@
   }
 }
 
+/* Sponsor redirect countdown */
+#sponsorCountdown {
+  background-color: #fdf8f3;
+  border: 1px solid #e0d5c7;
+  border-radius: 4px;
+  padding: 1rem 1.25rem;
+  margin-top: 1.25rem;
+  max-width: 480px;
+
+  p {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #countdownTimer {
+    font-weight: 700;
+  }
+
+  #skipRedirect {
+    background: none;
+    border: none;
+    color: #b22030;
+    cursor: pointer;
+    font-size: 0.95rem;
+    padding: 0;
+    text-decoration: underline;
+
+    &:hover {
+      color: #361b01;
+    }
+  }
+}
+
 /* --------------------------------------------------------------------------
    Homepage Content Hierarchy
    -------------------------------------------------------------------------- */

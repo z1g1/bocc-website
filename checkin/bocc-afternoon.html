@@ -47,4 +47,12 @@ sitemap: false
 <div id="greeting" role="status" aria-live="polite" style="display:none;">
 </div>
 
+{% if site.data.sponsor.enabled %}
+<div id="sponsorRedirect" style="display:none;"
+     data-sponsor-name="{{ site.data.sponsor.name }}"
+     data-sponsor-url="{{ site.data.sponsor.url }}"
+     data-sponsor-delay="{{ site.data.sponsor.delay }}">
+</div>
+{% endif %}
+
 <script src="/js/checkin.js" defer></script>

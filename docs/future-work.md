@@ -43,8 +43,8 @@ Added "What to Expect" section to homepage explaining the schedule (open network
 ### Sponsor Contact Form (UX R2)
 The same Google Form is used for sponsorship inquiries, Code of Conduct violation reports, and general contact. A separate form for sponsorship would improve professionalism. Requires creating a new Google Form.
 
-### Sponsor Redirect After Check-in (UX R7)
-The sponsorship page promises a "Redirect link on BOCC's digital Check-in App" but this is not implemented in `checkin.js`. Needs design decision on how to surface sponsor content post-check-in.
+### ~~Sponsor Redirect After Check-in (UX R7)~~ - RESOLVED 2026-03-21
+Implemented post-check-in countdown redirect. Sponsor config in `_data/sponsor.yml` (name, URL, delay, enabled toggle). Currently defaults to 716.social. Countdown shows "Visiting [name] in 5 seconds..." with "Go now" and "Stay here" options.
 
 ### ~~Coffee and Code / BOCC Afternoon Events (UX R16)~~ - RESOLVED 2026-03-21
 Coffee and Code moved to their own site -- check-in page removed. BOCC Afternoon Edition promoted on homepage with upcoming dates and RSVP link. Check-in page retained for event-day use.

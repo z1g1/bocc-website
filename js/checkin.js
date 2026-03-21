@@ -238,14 +238,65 @@ document.addEventListener('DOMContentLoaded', function() {
       var heading = document.getElementById('checkinHeader');
       var greeting = document.getElementById('greeting');
       heading.innerText = 'Thank you!';
-      var message = 'Thank you for checking in!';
+
+      var message = '<p>Thank you for checking in!</p>';
       if (apiSuccess === false) {
-          message += ' We saved your info locally. If connectivity issues persist, please let a host know.';
+          message += '<p>We saved your info locally. If connectivity issues persist, please let a host know.</p>';
       }
-      greeting.innerText = message;
+
+      // Check for sponsor redirect configuration
+      var sponsorEl = document.getElementById('sponsorRedirect');
+      if (sponsorEl) {
+          var sponsorName = sponsorEl.dataset.sponsorName;
+          var sponsorUrl = sponsorEl.dataset.sponsorUrl;
+          var sponsorDelay = parseInt(sponsorEl.dataset.sponsorDelay, 10) || 5;
+
+          message += '<div id="sponsorCountdown">' +
+              '<p>Visiting <strong>' + escapeHtml(sponsorName) + '</strong> in <span id="countdownTimer">' + sponsorDelay + '</span> seconds\u2026</p>' +
+              '<p><a href="' + escapeHtml(sponsorUrl) + '">Go now</a> · <button type="button" id="skipRedirect">Stay here</button></p>' +
+              '</div>';
+      }
+
+      greeting.innerHTML = message;
       document.getElementById('checkinForm').style.display = 'none';
       greeting.style.display = 'block';
       focusElement(heading);
+
+      // Start countdown if sponsor redirect exists
+      if (sponsorEl) {
+          startSponsorCountdown(
+              sponsorEl.dataset.sponsorUrl,
+              parseInt(sponsorEl.dataset.sponsorDelay, 10) || 5
+          );
+      }
+  }
+
+  function startSponsorCountdown(url, seconds) {
+      var remaining = seconds;
+      var timerEl = document.getElementById('countdownTimer');
+      var countdownEl = document.getElementById('sponsorCountdown');
+      var cancelled = false;
+
+      var skipBtn = document.getElementById('skipRedirect');
+      if (skipBtn) {
+          skipBtn.addEventListener('click', function() {
+              cancelled = true;
+              countdownEl.innerHTML = '<p>Redirect cancelled.</p>';
+          });
+      }
+
+      var interval = setInterval(function() {
+          if (cancelled) {
+              clearInterval(interval);
+              return;
+          }
+          remaining--;
+          if (timerEl) timerEl.textContent = remaining;
+          if (remaining <= 0) {
+              clearInterval(interval);
+              window.location.href = url;
+          }
+      }, 1000);
   }
 
   if (checkinData) {
