@@ -99,6 +99,22 @@ We meet upstairs in the Seneca One lobby by Tellers bar. Enter through either Se
 
 <div class="homepage-section" markdown="1">
 
+## BOCC Afternoon Edition
+
+Can't make Tuesday mornings? Join us for the Afternoon Edition -- a casual after-work meetup at different spots around Buffalo.
+
+| Date | Time | Location |
+|------|------|----------|
+| Fri March 27 | 4 PM | Filled with Love Buffalo Cafe |
+| Wed April 15 | 4 PM | Fitz Books & Waffles |
+| Thu May 14 | 5 PM | Meet & Eat Charcuterie |
+
+[RSVP for the March event on 716.social](https://www.716.social/c/events/bocc-afternoon-edition-march)
+
+</div>
+
+<div class="homepage-section" markdown="1">
+
 ## Online
 Join our online community and continue the Tuesday energy during the week on [716.social](https://www.716.social/join?invitation_token=bed202874ed69479b8a909a526f6e81a39a855d0-27595154-ec42-4727-a330-64a0b7680855)
 

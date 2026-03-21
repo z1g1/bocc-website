@@ -42,7 +42,7 @@ Ruby environment managed via `rbenv` + `ruby-build`. Gems installed locally to `
 - HTML forms at `/checkin/bocc` and `/checkin/coffee-and-code` collect attendee info
 - `js/checkin.js` handles form submission, stores data in `localStorage` for return visitors, and POSTs to a separate backend at `https://bocc-backend.netlify.app/.netlify/functions/checkin`
 - URL parameters: `debug`, `token`, `eventId`, `local` (set `local=1` to skip API calls)
-- Each check-in page sets a hidden `eventId` field to distinguish events
+- Check-in pages exist for `/checkin/bocc` and `/checkin/bocc-afternoon` (Coffee and Code moved to separate site)
 
 **External integrations**:
 - Eventbrite embedded checkout widget on the index page

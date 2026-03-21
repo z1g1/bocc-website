@@ -46,6 +46,6 @@ The same Google Form is used for sponsorship inquiries, Code of Conduct violatio
 ### Sponsor Redirect After Check-in (UX R7)
 The sponsorship page promises a "Redirect link on BOCC's digital Check-in App" but this is not implemented in `checkin.js`. Needs design decision on how to surface sponsor content post-check-in.
 
-### Coffee and Code / BOCC Afternoon Events (UX R16)
-Check-in pages exist for these events but they are not mentioned anywhere on the main site. Need to confirm if they are active and should be promoted.
+### ~~Coffee and Code / BOCC Afternoon Events (UX R16)~~ - RESOLVED 2026-03-21
+Coffee and Code moved to their own site -- check-in page removed. BOCC Afternoon Edition promoted on homepage with upcoming dates and RSVP link. Check-in page retained for event-day use.
 
