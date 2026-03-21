@@ -1,7 +1,8 @@
 ---
 layout: single
 class: wide
-title: About BOCC
+title: "About Buffalo Open Coffee Club (BOCC)"
+description: "Learn the history of Buffalo Open Coffee Club — from its 2010 origins on Chippewa to today's 150-person weekly meetup at Seneca One Tower. Join Buffalo's entrepreneurial community every Tuesday morning."
 permalink: /about/
 
 gallery:
@@ -31,7 +32,7 @@ Everything old is new again. Back in 2010, a small group (a packed morning was 1
 
 This post COVID incarnation of the group, organized by [Zack Glick](https://www.linkedin.com/in/zglick/), is not exactly that group, but it is an attempt to gather the startup community under a chill spot to talk with the other members of the community, to encourage chasing the impossible, and to be there for the community. 
 
-{% include gallery caption="Buffalo Open Coffee Club meets every Tuesday morning. Please [join us](https://www.eventbrite.com/e/buffalo-open-coffee-club-tickets-1112864570889)" %}
+{% include gallery caption="Buffalo Open Coffee Club meets every Tuesday morning. Please [join us](https://www.eventbrite.com/e/buffalo-open-coffee-club-tickets-1983098086761)" %}
 
 
-So come drink coffee with us and invite every entrepreneur you know! 🚀 We [meet](https://www.eventbrite.com/e/buffalo-open-coffee-club-tickets-1112864570889) every Tuesday morning 730-9 AM in the lobby of Seneca One Tower. 
+So come drink coffee with us and invite every entrepreneur you know! 🚀 We [meet](https://www.eventbrite.com/e/buffalo-open-coffee-club-tickets-1983098086761) every Tuesday morning 730-9 AM in the lobby of Seneca One Tower at [1 Seneca St, Buffalo, NY 14203](https://www.google.com/maps/search/?api=1&query=1+Seneca+St+Buffalo+NY+14203).

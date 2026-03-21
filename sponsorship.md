@@ -7,7 +7,8 @@ header:
   actions:
     - label: "Sponsor BOCC!"
       url: "https://docs.google.com/forms/d/e/1FAIpQLSfDqOoB3eLfUJe2bST_3hzpHFPNxR8zNRARXSpbpLkvJrjmyw/viewform"
-title: Sponsorship Information
+title: "Sponsor Buffalo Open Coffee Club - Reach Buffalo's Startup Community"
+description: "Sponsor BOCC for $500/month and reach 100-120 entrepreneurs weekly at Buffalo's largest free networking event. Tax-deductible via BootSector 501(c)(3). Includes social media promotion, live mentions, and check-in app placement."
 permalink: /sponsorship/
 gallery:
   - url: https://www.linkedin.com/posts/scott-wojtanik-mba-59ba72108_morningmeetup-buffalocoffeeclub-coffeewithpurpose-activity-7324058248595054592-KBeB 
