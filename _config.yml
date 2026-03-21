@@ -13,6 +13,7 @@
 # you will see them accessed via {{ site.title }}, {{ site.email }}, and so on.
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
+locale: "en-US"
 title: Buffalo Open Coffee Club
 email: bocc@zackglick.com
 description: >- # this means to ignore newlines until "baseurl:"
@@ -59,6 +60,7 @@ footer:
       icon: "fab fa-fw fa-facebook"
       url: "https://www.facebook.com/buffaloopencoffeeclub"
     - label: "Register on Eventbrite"
+      icon: "fas fa-fw fa-ticket-alt"
       url: "https://bocc.eventbrite.com/"
     - label: "Powered by BootSector"
       url: "https://joinbootsector.com/"
@@ -66,6 +68,7 @@ footer:
       icon: "fas fa-fw fa-handshake"
       url: "/sponsorship/"
     - label: "Contact Us"
+      icon: "fas fa-fw fa-envelope"
       url: "https://docs.google.com/forms/d/e/1FAIpQLSfDqOoB3eLfUJe2bST_3hzpHFPNxR8zNRARXSpbpLkvJrjmyw/viewform?usp=header"
 
 # Exclude from processing.

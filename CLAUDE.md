@@ -33,7 +33,7 @@ Ruby environment managed via `rbenv` + `ruby-build`. Gems installed locally to `
 **Hosting**: GitHub Pages via the `main` branch. Custom domain configured in `CNAME`.
 
 **Key pages** (all Markdown with YAML front matter):
-- `index.md` — Landing page with embedded Eventbrite checkout widget (event `1112864570889`)
+- `index.md` — Landing page with embedded Eventbrite checkout widget (event `1983098086761`)
 - `about.md` — `/about/` — Event history, photo gallery
 - `sponsorship.md` — `/sponsorship/` — Sponsor pitch with LinkedIn testimonial gallery
 - `code-of-conduct.md` — `/code-of-conduct/`

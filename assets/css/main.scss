@@ -211,19 +211,77 @@
   margin: 1.5rem 0;
 }
 
+/* Testimonial blockquotes */
+.homepage-section blockquote {
+  border-left: 3px solid #f2a63a;
+  background-color: #fdf8f3;
+  padding: 1rem 1.25rem;
+  margin: 1rem 0;
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  font-size: 0.95rem;
+  color: #333;
+
+  p {
+    margin-bottom: 0;
+  }
+}
+
 /* --------------------------------------------------------------------------
    General Refinements
    -------------------------------------------------------------------------- */
 
-/* Improve link focus visibility sitewide */
-a:focus-visible {
-  outline: 2px solid #f2a63a;
+/* Fix link contrast: sunrise skin #e3344a on #e8d5b7 fails WCAG AA (3.1:1).
+   #b22030 achieves ~5.2:1 on the tan background. */
+a {
+  color: #b22030;
+}
+
+/* Universal focus visibility */
+:focus-visible {
+  outline: 3px solid #361b01;
   outline-offset: 2px;
+}
+
+a:focus-visible {
   border-radius: 2px;
+}
+
+/* Respect reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Button loading/submitting state */
+.submitting {
+  opacity: 0.7;
+  pointer-events: none;
 }
 
 /* Ensure honeypot stays hidden even if inline styles fail */
 .honeypot-field {
   position: absolute;
   left: -9999px;
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 480px) {
+  #checkinForm #checkinButton {
+    width: 100%;
+  }
+
+  .homepage-section {
+    padding: 1rem 0;
+  }
+
+  .homepage-cta {
+    padding: 1rem;
+  }
 }

@@ -19,25 +19,33 @@ Deferred — `eventSchedule` is doing the heavy lifting. Revisit if Google Searc
 
 ---
 
-## Needs User Input
+## Resolved Items
 
-### Dual Eventbrite Event IDs (UX R5)
-The homepage header CTA links to event `1112864570889` while the embedded widget uses `1983098086761`. Need to confirm which is current and unify.
+### ~~Dual Eventbrite Event IDs (UX R5)~~ - RESOLVED 2026-03-20
+Unified all references to event ID `1983098086761` across index.md, about.md, navigation.yml, custom.html structured data, and _config.yml.
+
+### ~~sessionStorage vs localStorage for Check-in (UX R4)~~ - RESOLVED 2026-03-20
+Switched to localStorage with 30-day TTL. Returning visitors are now recognized across weekly visits.
+
+### ~~Parking/Transit/Wayfinding Info (UX R13)~~ - RESOLVED 2026-03-21
+Added "Getting Here" section to homepage with entrance directions, escalator/elevator info, parking details, and link to Seneca One's parking page.
+
+### ~~Homepage Social Proof~~ - RESOLVED 2026-03-21
+Added "What People Are Saying" section with 3 testimonial blockquotes (Scott Wojtanik, Yelenna Cichocki, Lena Levine) linked to their original LinkedIn posts.
+
+### ~~"What to Expect" First-Timer Content~~ - RESOLVED 2026-03-21
+Added "What to Expect" section to homepage explaining the schedule (open networking, Gives and Asks, no hard out), etiquette (no pitching, bring business cards), and first-timer welcome.
+
+---
+
+## Needs User Input
 
 ### Sponsor Contact Form (UX R2)
 The same Google Form is used for sponsorship inquiries, Code of Conduct violation reports, and general contact. A separate form for sponsorship would improve professionalism. Requires creating a new Google Form.
 
-### sessionStorage vs localStorage for Check-in (UX R4)
-Phase 2 security fixes switched from localStorage to sessionStorage (4-hour TTL). This means returning visitors are never recognized week-to-week. Options:
-- Switch back to localStorage with 30-day TTL (better UX, slightly more PII exposure risk on shared devices)
-- Store only a non-PII identifier in localStorage and re-fetch from backend (best of both worlds, requires backend work)
-- Keep sessionStorage (most private, worst returning-visitor UX)
-
 ### Sponsor Redirect After Check-in (UX R7)
 The sponsorship page promises a "Redirect link on BOCC's digital Check-in App" but this is not implemented in `checkin.js`. Needs design decision on how to surface sponsor content post-check-in.
 
-### Parking/Transit/Wayfinding Info (UX R13)
-Would reduce first-visit friction. Needs someone with local knowledge to write the content.
-
 ### Coffee and Code / BOCC Afternoon Events (UX R16)
 Check-in pages exist for these events but they are not mentioned anywhere on the main site. Need to confirm if they are active and should be promoted.
+

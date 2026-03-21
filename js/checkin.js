@@ -2,34 +2,34 @@
 // the first page it was used with is bocc.html
 document.addEventListener('DOMContentLoaded', function() {
 
-  // --- Helper: TTL-based sessionStorage ---
+  // --- Helper: TTL-based localStorage ---
   var STORAGE_KEY = 'checkinData';
-  var STORAGE_TTL = 4 * 60 * 60 * 1000; // 4 hours
+  var STORAGE_TTL = 30 * 24 * 60 * 60 * 1000; // 30 days
 
   function setWithExpiry(key, value, ttlMs) {
       var item = {
           value: value,
           expiry: Date.now() + ttlMs
       };
-      sessionStorage.setItem(key, JSON.stringify(item));
+      localStorage.setItem(key, JSON.stringify(item));
   }
 
   function getWithExpiry(key) {
-      var raw = sessionStorage.getItem(key);
+      var raw = localStorage.getItem(key);
       if (!raw) return null;
       try {
           var item = JSON.parse(raw);
           if (!item || typeof item !== 'object' || !item.expiry || !item.value) {
-              sessionStorage.removeItem(key);
+              localStorage.removeItem(key);
               return null;
           }
           if (Date.now() > item.expiry) {
-              sessionStorage.removeItem(key);
+              localStorage.removeItem(key);
               return null;
           }
           return item.value;
       } catch (e) {
-          sessionStorage.removeItem(key);
+          localStorage.removeItem(key);
           return null;
       }
   }
@@ -74,16 +74,26 @@ document.addEventListener('DOMContentLoaded', function() {
       if (!errEl) {
           errEl = document.createElement('div');
           errEl.id = 'validationError';
+          errEl.setAttribute('role', 'alert');
+          errEl.setAttribute('tabindex', '-1');
           var form = document.getElementById('checkinForm');
           form.insertBefore(errEl, form.firstChild);
       }
       errEl.textContent = message;
       errEl.style.display = 'block';
+      errEl.focus();
   }
 
   function clearValidationError() {
       var errEl = document.getElementById('validationError');
       if (errEl) errEl.style.display = 'none';
+  }
+
+  // --- Helper: Escape HTML to prevent XSS in name display ---
+  function escapeHtml(str) {
+      var div = document.createElement('div');
+      div.appendChild(document.createTextNode(str));
+      return div.innerHTML;
   }
 
   // --- Helper: Validate token ---
@@ -92,6 +102,28 @@ document.addEventListener('DOMContentLoaded', function() {
       if (token.length > 64) return '';
       if (!/^[a-zA-Z0-9\-]+$/.test(token)) return '';
       return token;
+  }
+
+  // --- Helper: Button states ---
+  function setButtonLoading(btn) {
+      btn.disabled = true;
+      btn.dataset.originalText = btn.textContent;
+      btn.textContent = 'Checking in\u2026';
+      btn.classList.add('submitting');
+  }
+
+  function resetButton(btn) {
+      btn.disabled = false;
+      btn.textContent = btn.dataset.originalText || 'Check In';
+      btn.classList.remove('submitting');
+  }
+
+  // --- Helper: Focus management for state changes ---
+  function focusElement(el) {
+      if (!el.getAttribute('tabindex')) {
+          el.setAttribute('tabindex', '-1');
+      }
+      el.focus();
   }
 
   // --- URL parameters (gated to non-production) ---
@@ -112,19 +144,19 @@ document.addEventListener('DOMContentLoaded', function() {
           checkinData = stored;
       } else if (stored) {
           // Stored data is malformed, clear it
-          sessionStorage.removeItem(STORAGE_KEY);
+          localStorage.removeItem(STORAGE_KEY);
       }
   } catch (e) {
-      sessionStorage.removeItem(STORAGE_KEY);
+      localStorage.removeItem(STORAGE_KEY);
   }
 
-  // Also migrate/clear any old localStorage data
+  // Migrate any old sessionStorage data
   try {
-      if (localStorage.getItem('checkinData')) {
-          localStorage.removeItem('checkinData');
+      if (sessionStorage.getItem('checkinData')) {
+          sessionStorage.removeItem('checkinData');
       }
   } catch (e) {
-      // Ignore localStorage errors
+      // Ignore sessionStorage errors
   }
 
   function captureCheckinData() {
@@ -195,9 +227,25 @@ document.addEventListener('DOMContentLoaded', function() {
           });
           var result = await response.json();
           debugLog('API response received', { status: response.status });
+          return true;
       } catch (error) {
           console.error('Checkin submission error');
+          return false;
       }
+  }
+
+  function showThankYou(apiSuccess) {
+      var heading = document.getElementById('checkinHeader');
+      var greeting = document.getElementById('greeting');
+      heading.innerText = 'Thank you!';
+      var message = 'Thank you for checking in!';
+      if (apiSuccess === false) {
+          message += ' We saved your info locally. If connectivity issues persist, please let a host know.';
+      }
+      greeting.innerText = message;
+      document.getElementById('checkinForm').style.display = 'none';
+      greeting.style.display = 'block';
+      focusElement(heading);
   }
 
   if (checkinData) {
@@ -208,16 +256,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
       document.getElementById('checkinHeader').innerText = 'Welcome back!';
       greetingDiv.innerHTML = '<p>Welcome back, ' + escapeHtml(checkinData.name) + '!</p>' +
-          '<button type="button" id="confirmCheckinBtn" style="margin-right:10px;">Check In</button>' +
-          '<button type="button" id="notMeBtn">Not me — start fresh</button>';
+          '<button type="button" id="confirmCheckinBtn">Check In</button>' +
+          '<button type="button" id="notMeBtn">Not me \u2014 start fresh</button>';
       greetingDiv.style.display = 'block';
 
       document.getElementById('notMeBtn').addEventListener('click', function() {
-          sessionStorage.removeItem(STORAGE_KEY);
+          localStorage.removeItem(STORAGE_KEY);
           window.location.reload();
       });
 
       document.getElementById('confirmCheckinBtn').addEventListener('click', async function() {
+          var btn = this;
+          setButtonLoading(btn);
+
           // Update checkin date and event-specific fields
           var eventId = document.getElementById('eventId').value;
           checkinData.checkinDate = new Date().toISOString();
@@ -226,48 +277,35 @@ document.addEventListener('DOMContentLoaded', function() {
 
           setWithExpiry(STORAGE_KEY, checkinData, STORAGE_TTL);
 
-          greetingDiv.innerHTML = '<p>Thank you for checking in!</p>';
-
+          var apiSuccess = true;
           if (localOnly !== '1') {
-              try {
-                  await sendCheckinData(checkinData);
-              } catch (error) {
-                  console.error('Checkin submission error');
-              }
+              apiSuccess = await sendCheckinData(checkinData);
           }
+
+          showThankYou(apiSuccess);
       });
   } else {
-      var checkinButton = document.getElementById('checkinButton');
-      var handleCheckinClick = async function() {
+      var checkinForm = document.getElementById('checkinForm');
+
+      var handleSubmit = async function(e) {
+          e.preventDefault();
+
+          var checkinButton = document.getElementById('checkinButton');
           checkinData = captureCheckinData();
           if (!checkinData) return; // Validation failed or honeypot triggered
 
+          setButtonLoading(checkinButton);
+
           setWithExpiry(STORAGE_KEY, checkinData, STORAGE_TTL);
 
+          var apiSuccess = true;
           if (localOnly !== '1') {
-              try {
-                  await sendCheckinData(checkinData);
-              } catch (error) {
-                  console.error('Checkin submission error');
-              }
+              apiSuccess = await sendCheckinData(checkinData);
           }
 
-          // Display thank you message
-          document.getElementById('checkinHeader').innerText = 'Thank you!';
-          document.getElementById('greeting').innerText = 'Thank you for checking in!';
-          document.getElementById('checkinForm').style.display = 'none';
-          document.getElementById('greeting').style.display = 'block';
-
-          checkinButton.removeEventListener('click', handleCheckinClick);
+          showThankYou(apiSuccess);
       };
 
-      checkinButton.addEventListener('click', handleCheckinClick);
-  }
-
-  // --- Helper: Escape HTML to prevent XSS in name display ---
-  function escapeHtml(str) {
-      var div = document.createElement('div');
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
+      checkinForm.addEventListener('submit', handleSubmit);
   }
 });
