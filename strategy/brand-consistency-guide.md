@@ -144,7 +144,7 @@ Every piece of content should be traceable back to this sentence. It contains th
 
 | Audience | Core message | Supporting proof |
 |----------|-------------|-----------------|
-| **First-timers / curious** | "Show up, grab a coffee, meet people. It is free and you do not need to know anyone." | No signup required beyond a free Eventbrite ticket. Name tags provided. Format explained at the event. |
+| **First-timers / curious** | "Show up, grab a coffee, meet people. It is free and you do not need to know anyone." | No signup required. Name tags provided. Format explained at the event. |
 | **Regular attendees** | "This is your community. Bring someone new." | Gives and Asks creates real connections. People launch projects together. Lasting relationships form here. |
 | **Potential sponsors** | "Reach 100-120 entrepreneurs per month in an authentic, high-trust environment." | Tax-deductible via BootSector 501(c)(3). Multiple touchpoints (live mention, check-in app, social media). |
 | **Buffalo media / ecosystem** | "BOCC is where Buffalo's entrepreneurial community gathers. Every week, for free." | Origin story back to 2010. 32+ average weekly attendance. University engagement. Diverse 50/50 gender split. |
@@ -153,7 +153,7 @@ Every piece of content should be traceable back to this sentence. It contains th
 
 These should appear across platforms over time, not crammed into every post:
 
-- Free every week, no exceptions
+- Free every week, no exceptions. (Except the last two weeks of the year, or the tuesday after a Monday night Buffalo Bills game. Go Bills! )
 - Running since 2010 in various forms (origin story credibility)
 - 32+ average weekly attendees in 2024
 - Seneca One Tower lobby -- a real, recognizable Buffalo landmark
