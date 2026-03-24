@@ -34,7 +34,6 @@ LinkedIn is BOCC's strongest natural platform. The audience -- entrepreneurs, fo
 1. Drive weekly attendance from 32 toward 50+ average
 2. Attract and retain $500/month sponsors
 3. Establish BOCC as the known front door to Buffalo's startup community
-4. Build Zack Glick's personal brand as the community builder behind it
 
 **Key insight:** BOCC already has the hardest thing to manufacture on LinkedIn -- genuine social proof. Six community members have already posted organic testimonials. The strategy is to amplify what is already happening naturally, not invent something new.
 
@@ -61,7 +60,7 @@ gather in the Seneca One Tower lobby for coffee, conversation, and our signature
 they can offer. No memberships. No sales pitches. No gatekeeping.
 
 Started in 2010 at Spot on Chippewa with 10 people. Grew to 150/week pre-pandemic.
-Currently rebuilding under organizer Zack Glick and the BootSector 501(c)(3) nonprofit.
+Current organizer Zack Glick and the BootSector 501(c)(3) nonprofit.
 
 WHO SHOWS UP:
 -- Solo founders figuring it out for the first time
